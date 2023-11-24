@@ -2,7 +2,8 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 
 const generateChangelog = () => {
-  const rawCommits = execSync('git log --pretty=format:"%h %s %ad" --date=short').toString().split('\n');
+  const rawCommits = execSync('git log --pretty=format:"%s %ad %h" --date=short').toString().split('\n');
+  console.log(rawCommits);
   let changelog = "# Changelog\n\n";
   let currentVersion = "";
   let versionContents = {
