@@ -5,3 +5,4 @@
 - 2nd ([fix:](https://jira.action-media.ru/browse/fix:))
 - fix: ([v1.0.0](https://jira.action-media.ru/browse/v1.0.0))
 - add ([PT-10502](https://jira.action-media.ru/browse/PT-10502))
+- addqewqwewqeqwe ([PT-10505](https://jira.action-media.ru/browse/PT-10505))
