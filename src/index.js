@@ -5,9 +5,13 @@ const path = require('path');
 const packageJson = require('../package.json');
 
 const generateChangelog = () => {
-  const rawCommits = execSync('git log --pretty=format:"%s"').toString().split('\n');
+  const rawCommits = execSync('git log --pretty=format:"%s"')
+    .toString()
+    .split('\n');
   let changelogPath = path.join(__dirname, 'CHANGELOG.md');
-  let changelogContent = fs.existsSync(changelogPath) ? fs.readFileSync(changelogPath).toString() : '';
+  let changelogContent = fs.existsSync(changelogPath)
+    ? fs.readFileSync(changelogPath).toString()
+    : '';
 
   let currentVersion = packageJson.version.split('.').map(Number);
   let versionString = `v${currentVersion.join('.')}`;
@@ -17,7 +21,7 @@ const generateChangelog = () => {
     changelogContent = versionHeader + changelogContent;
   }
 
-  rawCommits.forEach(commit => {
+  rawCommits.forEach((commit) => {
     let [issueNumber, message] = commit.split(' ', 2);
     let commitType = message.split(' ').pop();
     let jiraLink = `https://jira.action-media.ru/browse/${issueNumber}`;
@@ -37,9 +41,13 @@ const generateChangelog = () => {
     }
 
     if (changelogContent.includes(versionHeader)) {
-      let insertPoint = changelogContent.indexOf(versionHeader) + versionHeader.length;
+      let insertPoint =
+        changelogContent.indexOf(versionHeader) + versionHeader.length;
       let commitEntry = `- ${message} ([${issueNumber}](${jiraLink}))\n`;
-      changelogContent = changelogContent.slice(0, insertPoint) + commitEntry + changelogContent.slice(insertPoint);
+      changelogContent =
+        changelogContent.slice(0, insertPoint) +
+        commitEntry +
+        changelogContent.slice(insertPoint);
     }
   });
 
@@ -47,3 +55,4 @@ const generateChangelog = () => {
 };
 
 generateChangelog();
+////////////////////////////
