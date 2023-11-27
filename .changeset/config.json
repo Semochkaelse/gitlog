@@ -1,8 +1,6 @@
 {
-  "changelog": ["@changesets/changelog-github", { "repo": "asd" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "Semochkaelse/gitlog" }],
   "commit": false,
-  "fixed": [],
-  "linked": [],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
